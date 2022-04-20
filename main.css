@@ -1,0 +1,99 @@
+div#game_body {
+    width: 800px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(222, 184, 135, 0.5);
+    border-radius: 50%;
+    box-shadow: 0 0 10px #666666;
+}
+
+div#game_wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 900px;
+    height: 100vh;
+    background-color: navajowhite;
+    top: 0;
+    margin: 0 auto;
+    opacity: 0.9;
+}
+
+div > em {
+    font-size: 80px;
+    color: red;
+}
+
+div#title, div#title2 {
+    position: absolute;
+    top: 150px;
+    border-radius: 50%;
+    border-bottom: solid 10px red;
+}
+
+div#game_body > button {
+    margin: 40px auto;
+    font-size: 60px;
+    width: 400px;
+    color: #8B864E;
+    border-radius: 80px;
+    border: none;
+    height: 100px;
+    opacity: unset;
+    cursor: pointer;
+    box-shadow: 0 0 10px #666666;
+    background-color: PeachPuff;
+    border: none;
+}
+
+div#game_body > button:hover {
+    box-shadow: 0 10px 25px #666666;
+}
+
+div#inf {
+    background-color: navajowhite;
+    height: 200px;
+    width: 400px;
+    border-radius: 80px;
+    padding: 70px;
+    position: relative;
+    font-size: 30px;
+    overflow-y: auto;
+    word-wrap: break-word;
+    word-break: break-all;
+    box-shadow: 0 0 20px #666666;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #555;
+}
+
+div#close, #close2, #close3, #close4 {
+    display: none;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    cursor: pointer;
+    position: absolute;
+    top: 350px;
+    right: 768px;
+    box-shadow: 0 0 10px #666666;
+}
+
+div#close:hover, close2:hover, close3:hover {
+    background-color: orangered;
+}

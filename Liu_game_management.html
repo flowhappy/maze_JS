@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<link rel="stylesheet" href="normalize.css">
+	<link rel="stylesheet" href="main.css">
+	<script src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js"></script>
+	<script src="main.js"></script>
+	<script src="selection.js"></script>
+	<script src="user.js"></script>
+  <script src="maps.js"></script>
+</head>
+<body>
+<div style="z-index: -99;background-color: rgba(0,0,0,0.93)">
+	<div style="z-index: 0" id="game_wrap">
+		<div style="z-index: 2;top: 90px" id="title"><em><b id="mode"></b></em></div>
+		<div style="z-index: 2;display: inline; background: none; right:650px;top:300px" id="close" onClick="home()">🏠
+		</div>
+		<div id="game_body" style="z-index: 1;border-radius: 20px;height: 690px">
+			<div class="map_wrap">
+				<div class="show_map" id="map1" onclick="play_map(0)"></div>
+				<div class="show_map" id="map2" onclick="play_map(1)"></div>
+			</div>
+			<div class="map_wrap">
+				<div class="show_map" id="map3" onclick="play_map(2)"></div>
+				<div class="show_map" id="map4" onclick="play_map(3)"></div>
+			</div>
+			<div class="map_wrap">
+				<div class="show_map" id="map5" onclick="play_map(4)"></div>
+				<div class="show_map" id="map6" onclick="play_map(5)"></div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+<script>
+  function play_map(index) {
+    let get_mode=JSON.parse(localStorage.getItem('key'));
+    if (get_mode[0].mode == 'EASY') {
+      choose_map.push({maps_mode:maps_easy,maps_num:index,maps_name:'maps_easy'});
+      localStorage.setItem('get_map',JSON.stringify(choose_map));
+    } else if (get_mode[0].mode == 'NORMAL') {
+      choose_map.push({maps_mode:maps_normal,maps_num:index,maps_name:'maps_normal'});
+      localStorage.setItem('get_map',JSON.stringify(choose_map));
+    } else {
+      choose_map.push({maps_mode:maps_hard,maps_num:index,maps_name:'maps_hard'});
+      localStorage.setItem('get_map',JSON.stringify(choose_map));
+    }
+    window.location.assign('Liu_game_board.html')
+  }
+
+
+	function show_map(j) {
+		for (let i = 1; i <= 6; i++) {
+			$("#map" + i).css("background", "url(" + maps[j][i - 1] + ")");
+			$("#map" + i).css("background-repeat", "no-repeat");
+			$("#map" + i).css("background-position", "center");
+		}
+	}
+
+	const maps = [
+		['maps/maps_easy1.png', 'maps/maps_easy2.png', 'maps/maps_easy3.png', 'maps/maps_easy4.png', 'maps/maps_easy5.png', 'maps/maps_easy6.png'],
+		['maps/maps_normal1.png', 'maps/maps_normal2.png', 'maps/maps_normal3.png', 'maps/maps_normal4.png', 'maps/maps_normal5.png', 'maps/maps_normal6.png'],
+		['maps/maps_hard1.png', 'maps/maps_hard2.png', 'maps/maps_hard3.png', 'maps/maps_hard4.png', 'maps/maps_hard5.png', 'maps/maps_hard6.png'],
+	];
+	let read = JSON.parse(localStorage.getItem('key'));
+	if (read[0].mode == 'EASY') {
+		$("em").css("color", '#8B864E');
+		$("#title").css("border-color", '#8B864E');
+		show_map(0);
+	} else if (read[0].mode == 'NORMAL') {
+		$("em").css("color", 'dimgrey');
+		$("#title").css("border-color", 'dimgrey');
+		show_map(1);
+		$(".show_map").css("width", "300px");
+	} else {
+		$("em").css("color", 'black');
+		$("#title").css("border-color", 'black');
+		$(".show_map").css("width", "400px");
+		show_map(2);
+	}
+	$("#mode").text(read[0].mode + " MODE");
+</script>
+<style>
+  div.map_wrap {
+    margin: 5px auto;
+    width: 800px;
+    height: 500px;
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  div.show_map {
+    margin: 5px 20px;
+    width: 250px;
+    height: 200px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px #666666;
+    cursor: pointer;
+  }
+
+  div.show_map:hover {
+    box-shadow: 0 10px 20px #666666;
+  }
+</style>
+</html>

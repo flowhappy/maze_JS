@@ -1,0 +1,64 @@
+#map {
+    margin: 50px auto;
+    position: center;
+    display: flex;
+    width: 510px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    font-size: 0;
+}
+
+.wall, .way {
+    width: 20px;
+    height: 20px;
+    background-size: 100%;;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.wall {
+    /*background-color: black;*/
+    background-image: url(maps/walls.png);
+    background-size: 100%;;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.way {
+    /*background-color: navajowhite;*/
+    background-size: 100%;;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#username {
+    text-align: center;
+    border-radius: 20px;
+    width: 400px;
+    height: 100px;
+    background-color: rgba(216, 42, 4, 0.16);
+    border: none;
+    outline: none;
+    font-size: xx-large;
+}
+
+#name, #time, #stop {
+    font-weight: bold;
+}
+
+#go_rank,#show_steps{
+    border: none;
+    border-radius: 50%;
+    font-size: large;
+    background-color: red;
+    color: white;
+    width: 200px;
+    height: 50px;
+    font-size: xx-large;
+    cursor: pointer;
+}
+
+#go_rank:hover,#show_steps:hover{
+    background-color: #ff930e;
+}

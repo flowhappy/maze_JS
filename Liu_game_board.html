@@ -1,0 +1,98 @@
+<!--
+4.最佳路线提醒按钮：打开/关闭最佳路线提醒。之后打开提醒，将显示从入口到出口的最佳路线。
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="user.js"></script>
+  <script src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js"></script>
+  <script src="ranking.js"></script>
+  <link rel="stylesheet" href="normalize.css">
+  <link rel="stylesheet" href="main.css">
+  <script src="maps.js"></script>
+  <script src="board.js"></script>
+  <link rel="stylesheet" href="board.css">
+</head>
+<body onkeyup="get_red()">
+<div style="z-index: -99;background-color: rgba(0,0,0,0.93)" id="warp">
+  <div style="z-index: 0;display: flex;justify-content: space-evenly" id="game_wrap">
+    <div style="z-index: 2;top: 90px;display: flex;justify-content: space-between;
+    width: 800px;visibility: hidden;" id="title">
+      <div><em id="name"></em></div>
+      <div><em id="time">0 S</em></div>
+      <div id="stop" style="display: none;"><em>PAUSE</em></div>
+      <div><em id="steps" style="font-weight: bold"></em></div>
+    </div>
+    <div style="z-index: 2;top: 90px;display: flex;justify-content: space-between;
+    width: 800px;display: none;justify-self: center;font-weight: bold" id="title2">
+      <div><em id="step" style="font-size: 35px"></em></div>
+      <button onclick="window.location.assign('Liu_game_ranking.html')" id="go_rank">RANKING</button>
+      <button onclick="re_run()" id="show_steps">RERUN</button>
+      <div><em id="time2" style="font-size: 35px"></em></div>
+    </div>
+    <div style="z-index: 2;display: inline; background: none; right:630px;top:300px" id="close" onClick="home()">🏠
+    </div>
+    <div style="z-index: 999;display: inline; background: none; right:630px;top:400px;visibility: hidden" id="close2"
+         onClick="suspend()">⏸
+    </div>
+    <div style="z-index: 999;display: inline; background: none; right:630px;top:500px;visibility: hidden" id="close3"
+         onClick="prompt()">🔍
+    </div>
+    <div id="game_body" style="z-index: 1;border-radius: 20px;height: 690px">
+      <div id="map" style="z-index: 9;display: none"></div>
+      <input type="text" id="username" placeholder="input your name" onkeyup="check()">
+      <em id="warn" style="font-size: large;visibility: hidden">用户名不超过5位</em>
+      <button onclick="login()" style="font-size: x-large;width: 100px;height: 50px" id="login">Login</button>
+    </div>
+  </div>
+</div>
+</body>
+<script>
+  let use_map = JSON.parse(localStorage.getItem('get_map'));
+  let map = use_map[0].maps_mode;
+  let index = Number(use_map[0].maps_num);
+  let map_name = use_map[0].maps_name;
+  let get_mode = JSON.parse(localStorage.getItem('key'));
+  if (map_name == 'maps_normal') {
+    $("#steps").text(get_mode[0].count);
+    $("#map").css("width", "710px");
+  } else if (map_name == 'maps_hard') {
+    $("#steps").text(get_mode[0].count);
+    $("#game_body").css("width", "930px");
+    $("#game_wrap").css("width", "950px");
+    $("#map").css("width", "910px");
+  } else {
+    $("#steps").text(get_mode[0].count);
+    $("#map").css("width", "510px");
+  }
+
+  let length2;
+  function create_map() {
+    for (let j = 0; j < map.maps[index].length; j++) {
+      for (let k = 0; k < map.maps[index][j].length; k++) {
+        if (map.maps[index][j][k] == 1) {
+          $("#map").append('<div class="wall" id=' + j.toString() + k.toString() + '></div>')
+        } else if (j == 1 && k == 0) {
+          $("#map").append('<div name="red" style="background-color: red" class="way" id="1_0"></div>')
+        } else if (j == map.maps[index].length - 2 && k == map.maps[index][j].length - 1) {
+          length2 = map.maps[index][j].length - 1;
+          $("#map").append('<div value="nokey" name="out" class="wall" id=' + (j.toString() + '_' + k.toString()) + '></div>')
+        } else {
+          $("#map").append('<div name="navajowhite" class="way" id=' + (j.toString() + '_' + k.toString()) + '></div>')
+          ways_of_map.push(j.toString() + '_' + k.toString());
+        }
+      }
+    }
+    let key_index = Math.floor(Math.random() * ways_of_map.length);
+    $("#" + ways_of_map[key_index]).css('background-color', 'yellow');
+    $("#" + ways_of_map[key_index]).attr('value', 'key');
+  }
+
+  create_map();
+
+
+</script>
+</html>

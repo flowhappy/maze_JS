@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<link rel="stylesheet" href="normalize.css">
+	<script src="user.js"></script>
+	<link rel="stylesheet" href="main.css">
+	<script src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js"></script>
+	<script src="main.js"></script>
+</head>
+<body>
+<div style="z-index: -99;background-color: rgba(0,0,0,0.93)">
+	<div style="z-index: 0" id="game_wrap">
+		<div style="z-index: 2" id="title"><em><b>Let's Play Maze</b></em></div>
+		<div style="z-index: 2" id="close" onclick="get_back()">x</div>
+		<div id="game_body" style="z-index: 1">
+			<div id="inf" style="display: none">
+        <b>欢迎来到迷宫游戏</b><br/><br/>
+        <b>开始</b>><b>难度选择</b>><b>地图选择</b><br/><br/>
+        选择地图后进入到游戏界面，输入<b>用户名</b>开始游戏，最右边为<b>剩余步数</b>（撞墙不会扣步数），中间为<b>所用时间</b>（将在走出第一步时开始计数）<br/><br/>
+        <b>点击🏠为回到主菜单</b><br/>
+        <b>点击⏸暂停游戏</b><br/>
+        <b>点击▶继续游戏</b><br/>
+        <b>点击🔍查看迷宫最优路径</b><br/><br/>
+        点击<b>rerun按钮</b>查看游戏回放<br/>
+        点击<b>ranking按钮</b>进入排行榜<br/>
+        <b>排行榜</b>根据难易程度划分<br/><br/>
+        <b>吃到钥匙后</b>出现迷宫<b>出口</b><br/><br/>
+        钥匙为<b style="color: yellow">黄色</b>方块<br/>墙是<b style="color: darkgreen">绿色</b>悬崖<br/>路是<b style="color: white">白色</b>方块<br/>
+        <br/><b>方向键</b>↑←↓→操控人物的移动
+			</div>
+			<button onclick="Instruction()">Instruction</button>
+			<button onclick="Start()">Start</button>
+			<button onclick="Ranking()">Ranking</button>
+		</div>
+	</div>
+</div>
+</body>
+</html>

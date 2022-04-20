@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="normalize.css">
+  <link rel="stylesheet" href="main.css">
+  <script src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js"></script>
+  <script src="main.js"></script>
+  <script src="user.js"></script>
+  <link rel="stylesheet" href="ranking.css">
+  <script src="ranking.js"></script>
+</head>
+<body onload="get_easy()">
+<div style="z-index: -99;background-color: rgba(0,0,0,0.93)">
+  <div style="z-index: 0" id="game_wrap">
+    <div style="z-index: 2;top: 90px" id="title"><em><b id="mode">Ranking</b></em></div>
+    <div style="z-index: 2;display: inline; background: none; right:650px;top:300px" id="close"
+         onClick="window.location.assign('Liu_game_main.html')">🏠
+    </div>
+    <div id="game_body" style="z-index: 1;border-radius: 20px;height: 690px">
+      <div id="wrap">
+        <div class="selection" onclick="get_easy()">EASY</div>
+        <div class="selection" style="color: dimgrey" onclick="get_normal()">NORMAL</div>
+        <div class="selection" style="color: black" onclick="get_hard()">HARD</div>
+        <div id="content">
+          <div class="title">
+            <em id="mode_record" style="color: #8B864E"></em>
+          </div>
+          <div class="message" style="font-size: 60px">NO <br/> RECORD</div>
+          <div class="content">
+            <div id="rank">
+              <div><b>RANK</b></div>
+              <div id="record_rank"></div>
+            </div>
+            <div id="name">
+              <div><b>NAME</b></div>
+              <div id="record_name"></div>
+            </div>
+            <div id="time">
+              <div><b>TIME</b></div>
+              <div id="record_time"></div>
+            </div>
+            <div id="count">
+              <div><b>COUNT</b></div>
+              <div id="record_count"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<link rel="stylesheet" href="normalize.css">
+	<link rel="stylesheet" href="main.css">
+	<script src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js"></script>
+	<script src="user.js"></script>
+	<script src="selection.js"></script>
+</head>
+<body>
+<div style="z-index: -99;background-color: rgba(0,0,0,0.93)">
+	<div style="z-index: 0" id="game_wrap">
+		<div style="z-index: 2" id="title"><em><b>Difficulty Selection</b></em></div>
+		<div style="z-index: 2;display: inline; background: none; right:750px" id="close" onclick="home()">🏠</div>
+		<div id="game_body" style="z-index: 1">
+			<div id="inf" style="display: none">
+			</div>
+			<button onclick="easy()">EASY</button>
+			<button onclick="normal()" style="color: dimgrey">NORMAL</button>
+			<button onclick="hard()" style="color: black">HARD</button>
+		</div>
+	</div>
+</div>
+</body>
+</html>
